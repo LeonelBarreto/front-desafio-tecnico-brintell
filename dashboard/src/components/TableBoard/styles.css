@@ -1,0 +1,116 @@
+.container-table {
+    height: 100%;
+    width: 1020px;
+    
+    background: #FFFFFF;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+
+    margin-left: 20px;
+}
+
+.table-header {
+    display: flex;
+    align-items: center;
+
+    background-color: rgb(189, 143, 233);
+    color: #2e2c2c;
+
+    border-radius: 10px 10px 0 0;
+
+    padding: 10px;
+
+    font-size: 0.7rem;
+}
+
+.table-header-name {
+    width: 22%;
+}
+
+.table-header-cpf {
+    width: 20%;
+}
+
+.table-header-gender {
+    width: 5%;
+}
+.table-header-email {
+    width: 30%;
+}
+.table-header-phone {
+    width: 13%;
+}
+.table-header-icons {
+    width: 10%;
+}
+
+.table-body {
+    display: flex;
+    flex-direction: column;
+
+    overflow-y: scroll;
+    height: 475px;
+}
+
+.table-line {
+    display: flex;
+    align-items: center;
+    height: 25px;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+.table-line:first-child {
+    margin-top: 8px;
+}
+
+.table-line-name {
+    width: 22%;
+}
+
+.table-line-cpf {
+    width: 20%;
+}
+
+.table-line-gender {
+    width: 5%;
+}
+.table-line-email {
+    width: 30%;
+}
+.table-line-phone {
+    width: 13%;
+}
+.table-line-icons {
+    width: 10%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.table-line-icons img {
+    padding-left: 10px;
+    
+    cursor: pointer;
+}
+
+.table-body::-webkit-scrollbar{
+    width: 0.4rem;
+}
+
+.table-body::-webkit-scrollbar-track{
+    background-color: #ffffff;
+    border-radius: 20px;
+}
+
+.table-body::-webkit-scrollbar-thumb{
+    border-radius: 20px;
+    background-color: rgb(189, 143, 233);
+}
+
+.table-body::-webkit-scrollbar-thumb:hover{
+    background-color: #784FAC;
+}
+
+.table-line span {
+    font-size: 0.8rem;
+}
