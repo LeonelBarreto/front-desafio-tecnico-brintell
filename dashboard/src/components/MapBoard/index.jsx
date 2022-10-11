@@ -22,22 +22,31 @@ const locations = [
     [-12.981543, -38.465483]
 ]
 function Markers(){
-
+    const map = useMap();
+    return(
+        locations.map((location) => {
+            return(
+                <Marker position={location} key={location[0]} eventHandlers={{
+                    click: () => {
+                        map.setView(location, 14)
+                    }
+                }}>
+                <Popup>Você está aqui!</Popup>
+                </Marker>
+                )
+    })
+    )
 }
 function MapBoard() {
     L.Marker.prototype.options.icon = DefaultIcon;
     return (
         <div className='leafletContainer'>
-            <MapContainer center={[-12.9704, -38.5124]} zoom={12} style={{height: "93%", width: "93%"}}>
+            <MapContainer center={[-12.9704, -38.5124]} zoom={12} style={{height: "93%", width: "93%"}} scrollWheelZoom>
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     />
-                {locations.map((location) => (
-                    <Marker position={location} key={location[0]}>
-                        <Popup>Você está aqui!</Popup>
-                    </Marker>
-                ))}
+                <Markers/>
             </MapContainer>
         </div>
     )
