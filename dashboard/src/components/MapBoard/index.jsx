@@ -1,6 +1,5 @@
 import './styles.css';
 import {MapContainer, TileLayer, Marker, Popup} from 'react-leaflet'
-import { useMap } from 'react-leaflet/hooks'
 import 'leaflet/dist/leaflet.css'
 import L from 'leaflet';
 import icon from 'leaflet/dist/images/marker-icon.png';
@@ -23,11 +22,6 @@ const locations = [
 ]
 function MapBoard() {
     L.Marker.prototype.options.icon = DefaultIcon;
-    const navLocation = (latlng) => {
-        const map = useMap();
-        L.Map.setCenter(latlng)
-        map.setCenter(latlng)
-    }
     return (
         <div className='leafletContainer'>
             <MapContainer center={[-12.9704, -38.5124]} zoom={12} style={{height: "93%", width: "93%"}}>
@@ -36,7 +30,7 @@ function MapBoard() {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     />
                 {locations.map((location) => (
-                    <Marker position={location} onClick={(location) => navLocation(location)}>
+                    <Marker position={location} key={location[0]}>
                         <Popup>Você está aqui!</Popup>
                     </Marker>
                 ))}

@@ -1,8 +1,13 @@
 import './styles.css';
 import Edit from '../../assets/edit.svg';
 import Delete from '../../assets/delete.svg';
+import {useState} from 'react';
+import StudentModal from '../StudentModal';
+import DeleteModal from '../DeleteModal';
 
-function TableBoard({students}) {
+function TableBoard({students, loadAPI}) {
+    const [openDeleteModal, setOpenDeleteModal] = useState(false);
+    const [openEditModal, setOpenEditModal] = useState(false);
 
     function formatCPF(cpf){
         return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
@@ -12,7 +17,6 @@ function TableBoard({students}) {
         number  = number.replace(/[^\d]/g, "");
         return number.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
     }
-    
     return (
         <div className='container-table'>
             <div className='table-header'>
@@ -47,8 +51,22 @@ function TableBoard({students}) {
                             <span className='table-line-email'>{student.email}</span>
                             <span className='table-line-phone'>{formatPhone(student.telefone)}</span>
                             <div className='table-line-icons'>
-                                <img src={Edit} alt="editar" />
-                                <img src={Delete} alt="deletar" onClick={() => handleDeleteStudent(1)} />
+                                <img src={Edit} alt="editar" onClick={() => setOpenEditModal(student.id)}/>
+                                {openEditModal === student.id && 
+                                <StudentModal 
+                                setOpenEditModal={setOpenEditModal} 
+                                loadAPI={loadAPI} 
+                                id={student.id}
+                                register={false}
+                                />
+                                }
+                                <img src={Delete} alt="deletar" onClick={() => setOpenDeleteModal(student.id)}/>
+                                {openDeleteModal === student.id && 
+                                <DeleteModal 
+                                setOpenDeleteModal={setOpenDeleteModal}
+                                loadAPI={loadAPI}
+                                id={student.id}/>
+                            }
                             </div>
                         </div>
                     ))
