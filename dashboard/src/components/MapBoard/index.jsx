@@ -1,5 +1,6 @@
 import './styles.css';
 import {MapContainer, TileLayer, Marker, Popup} from 'react-leaflet'
+import {useMap} from 'react-leaflet/hooks'
 import 'leaflet/dist/leaflet.css'
 import L from 'leaflet';
 import icon from 'leaflet/dist/images/marker-icon.png';
@@ -20,6 +21,9 @@ const locations = [
     [-12.979151, -38.455549],
     [-12.981543, -38.465483]
 ]
+function Markers(){
+
+}
 function MapBoard() {
     L.Marker.prototype.options.icon = DefaultIcon;
     return (

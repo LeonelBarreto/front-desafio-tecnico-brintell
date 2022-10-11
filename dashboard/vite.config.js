@@ -1,7 +1,13 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { builtinModules } from "module";
+import { defineConfig } from "vite";
+import ignore from "rollup-plugin-ignore";
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()]
-})
+  build: {
+    rollupOptions: {
+      plugins: [ignore([...builtinModules, "ws"])],
+      // or:
+      // plugins: [ignore(["ws", "fs", "child_process", "crypto", "path"])],
+    },
+  },
+});
